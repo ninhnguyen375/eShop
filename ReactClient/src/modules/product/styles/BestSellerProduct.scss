@@ -1,0 +1,35 @@
+.top-seller--header {
+  font-weight: bold;
+  font-size: 2em;
+  text-align: center;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  hr {
+    width: 100px;
+    margin: 0 20px;
+  }
+}
+
+.top-seller--btn {
+  position: relative;
+  top: 177px;
+  width: calc(100% + 80px);
+  left: -40px;
+
+  i {
+    font-size: 3em;
+    color: #9e9e9e;
+    cursor: pointer;
+    transition: .3s;
+
+    &:hover {
+      color: #626262;
+    }
+  }
+}
+.slick-dots .slick-dots-bottom {
+  bottom: 0;
+}

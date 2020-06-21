@@ -1,0 +1,87 @@
+﻿@model RegisterViewModel
+@{
+    IEnumerable<string> errors = ViewContext.ModelState.Values
+                                        .SelectMany(x => x.Errors)
+                                        .Select(x => x.ErrorMessage);
+    var queryString = ViewContext.HttpContext.Request.QueryString;
+    var loginUrl = "/Account/Login" + queryString;
+}
+<div>
+    <!-- Sing up  Form -->
+    <section style="padding: 20px" class="signup">
+        <div class="container">
+            <div class="signup-content">
+                <div class="signup-form">
+                    <h2 class="form-title">Sign up</h2>
+                    <form asp-controller="Account" asp-action="Register" method="post" class="register-form" id="register-form">
+                        <input asp-for="QueryString" type="hidden" value="@queryString" />
+                        <div class="form-group">
+                            <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                            <input required asp-for="Name" type="text" name="name" id="name" placeholder="Your Name"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="email"><i class="zmdi zmdi-email"></i></label>
+                            <input required asp-for="Email" type="email" name="Email" id="Email" placeholder="Your Email"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="PhoneNumber"><i class="zmdi zmdi-phone"></i></label>
+                            <input required asp-for="PhoneNumber" type="text" name="PhoneNumber" id="PhoneNumber" placeholder="Your Phone Number"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                            <input pattern="(?=.*[\w])(?=.*\d)[\w\d]{8,}" required asp-for="Password" type="password" name="Password" id="Password" placeholder="Password"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
+                            <input required asp-for="RePassword" type="password" name="RePassword" id="RePassword" placeholder="Repeat your password"/>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
+                            <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
+                        </div>
+                        <div class="form-group form-button">
+                            <input type="submit" name="signup" id="signup" class="form-submit" value="Register"/>
+                        </div>
+                    </form>
+                </div>
+                <div class="signup-image text-center">
+                    <figure><img src="/lib/images/signup-image.jpg" alt="sing up image"></figure>
+                    I am already member.<a href="@loginUrl" class="signup-image-link"> Signin</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        const password = document.getElementById("Password");
+        const rePassword = document.getElementById("RePassword");
+
+        password.addEventListener("input", function (event) {
+            console.log(password.validity.patternMismatch, 'password.validity.patternMismatch')
+            if (password.validity.patternMismatch) {
+                password.setCustomValidity("Must be minimum 8 characters, at least one letter and one number");
+            } else {
+                password.setCustomValidity("");
+            }
+        });
+        rePassword.addEventListener("input", function (event) {
+            console.log(rePassword.value)
+            if (password.value !== rePassword.value) {
+                rePassword.validity.patternMismatch = true;
+                rePassword.setCustomValidity("Re password is incorrect");
+            } else {
+                rePassword.validity.patternMismatch = false;
+                rePassword.setCustomValidity("");
+            }
+        });
+
+    </script>
+    @if (ViewContext.ModelState.IsValid == false)
+    {
+        @foreach (string error in errors)
+        {
+            <script>
+                tata.error("@error", "", { duration: 5000 })
+            </script>
+        }
+    }
+</div>

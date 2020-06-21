@@ -1,0 +1,26 @@
+@mixin zoomingBg {
+  position: relative;
+
+  &:after {
+    content: "";
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    position: absolute;
+    z-index: -1;
+    border-radius: inherit;
+  }
+
+  &:hover {
+    opacity: 0.85;
+
+    &:after {
+      transition: 0.7s;
+      transform: scale(1.1);
+      opacity: 0;
+    }
+  }
+}

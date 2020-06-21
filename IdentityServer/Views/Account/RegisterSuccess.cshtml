@@ -1,0 +1,39 @@
+﻿@model RegisterSuccessViewModel
+@{
+    var queryString = ViewContext.HttpContext.Request.QueryString;  
+    var loginUrl = "/Account/Login" + queryString;
+}
+<style>
+    body {
+        background: #fff;
+    }
+</style>
+<div>
+    <div class="d-flex justify-content-center">
+        <div style="width:200px" id="sucessImg"></div>
+    </div>
+    <h2 class="text-center">Register Success</h2>
+    <h3 class="text-center">Redirecting to sign in page<h3>
+    <div class="d-flex justify-content-center">
+        <div style="width:200px" id="loadingImg"></div>
+    </div>
+    <script>
+        lottie.loadAnimation({
+            container: document.getElementById("sucessImg"),
+            renderer: 'svg',
+            loop: false,
+            autoplay: true,
+            path: '/lib/animations/success.json'
+        });
+        lottie.loadAnimation({
+            container: document.getElementById("loadingImg"),
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: '/lib/animations/loading-animation.json'
+        });
+        setTimeout(() => {
+            window.location = "@loginUrl"
+        }, 3000)
+    </script>
+</div>

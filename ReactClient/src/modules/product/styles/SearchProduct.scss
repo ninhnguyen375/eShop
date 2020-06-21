@@ -1,0 +1,51 @@
+@import '../../../assets/css/variables';
+
+.search-product-layout {
+  .search-product-layout--sider {
+    margin-top: 20px;
+
+    .sider--title {
+      font-weight: bold;
+      font-size: 1.6em;
+      text-transform: uppercase;
+      color: $mainOrange;
+
+      &:not(:nth-child(1)) {
+        margin-top: 40px;
+      }
+    }
+
+    .sider--menu-item {
+      text-transform: uppercase;
+      font-weight: bold;
+      cursor: pointer;
+      padding: 7px;
+
+      &:hover i, &.active {
+        color: $mainOrange;
+      }
+    }
+
+    .sider--divider {
+      width: 100%;
+      height: 2px;
+      background: rgb(128, 128, 128);
+      margin: 20px 0;
+    }
+  }
+
+  .search-product-layout--content {
+    margin-top: 20px;
+
+    .content--tool-bar {
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.content--list-product {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, var(--product-width));
+  justify-content: space-evenly;
+  row-gap: 2rem;
+}

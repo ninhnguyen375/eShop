@@ -1,0 +1,70 @@
+@import "../../../assets/css/variables";
+@import '../../../assets/css/mixins';
+
+.product-cart-item {
+
+  &.on-error {
+    border-left: #fa673f 7px solid;
+    border-radius: 7px;
+  }
+
+  .product-cart-item--left {
+    img {
+      box-shadow: 1px 1px 5px lightgray;
+      border-radius: 5px;
+    }
+  }
+
+  .product-cart-item--center,
+  .product-cart-item--right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .product-cart-item--center {
+    .product-cart-item--name {
+      font-weight: bold;
+      font-size: 1.4em;
+    }
+
+    .product-cart-item--size,
+    .product-cart-item--count {
+      font-weight: bold;
+    }
+  }
+
+  .product-cart-item--right {
+    align-items: flex-end;
+
+    .product-cart-item--total-price {
+      font-weight: bold;
+      font-size: 1.5em;
+      color: $mainOrange;
+    }
+
+    .product-cart-item--status {
+      color: $mainOrange;
+    }
+
+    .product-cart-item--love-btn,
+    .product-cart-item--delete-btn {
+      padding: 5px 45px;
+      outline: none;
+      cursor: pointer;
+
+      @include zoomingBg;
+    }
+
+    .product-cart-item--love-btn {
+      border: 1px solid #dee2e6;
+      background: #fff;
+    }
+
+    .product-cart-item--delete-btn {
+      border: 1px solid rgb(44, 44, 44);
+      color: #fff;
+      background: rgb(44, 44, 44);
+    }
+  }
+}

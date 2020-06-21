@@ -1,0 +1,71 @@
+{
+    "ReRoutes": [
+        {
+            "DownstreamPathTemplate": "/api/{everything}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5002
+                }
+            ],
+            "UpstreamPathTemplate": "/api/catalog/{everything}",
+            "UpstreamHttpMethod": [
+                "Get",
+                "Post",
+                "Put"
+            ]
+        },
+        {
+            "DownstreamPathTemplate": "/api/{everything}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5007
+                }
+            ],
+            "UpstreamPathTemplate": "/api/order/{everything}",
+            "UpstreamHttpMethod": [
+                "Get",
+                "Post",
+                "Put"
+            ]
+        },
+        {
+            "DownstreamPathTemplate": "/api/{everything}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5008
+                }
+            ],
+            "UpstreamPathTemplate": "/api/payment/{everything}",
+            "UpstreamHttpMethod": [
+                "Get",
+                "Post",
+                "Put"
+            ]
+        },
+        {
+            "DownstreamPathTemplate": "/api/{everything}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5009
+                }
+            ],
+            "UpstreamPathTemplate": "/api/cart/{everything}",
+            "UpstreamHttpMethod": [
+                "Get",
+                "Post",
+                "Put"
+            ]
+        }
+    ],
+    "GlobalConfiguration": {
+        "BaseUrl": "https://localhost:5000"
+    }
+}

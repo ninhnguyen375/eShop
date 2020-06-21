@@ -1,0 +1,101 @@
+@import "../../../assets/css/mixins";
+@import "../../../assets/css/variables";
+
+.product-detail {
+  .product-detail--add-to-cart-btn,
+  .product-detail--order-btn {
+    width: 100%;
+    height: 57px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: #fff;
+    font-size: 1.4em;
+    margin-top: 49px;
+    cursor: pointer;
+
+    @include zoomingBg;
+
+    i {
+      margin-right: 10px;
+    }
+
+    &.disabled {
+      pointer-events: none;
+      opacity: 0.6;
+    }
+  }
+
+  .product-detail--add-to-cart-btn {
+    background: rgb(39, 39, 39);
+  }
+
+  .product-detail--order-btn {
+    background: $mainOrange;
+  }
+
+  .product-detail--colors {
+    .colors--square {
+      $backgroundColor: var(--backgroundColor);
+      background-color: $backgroundColor;
+      width: 30px;
+      height: 30px;
+      outline: 1px solid #bbbbbb;
+      margin-right: 30px;
+      transition: 0.3s;
+
+      &:after {
+        content: "";
+        width: 30px;
+        height: 30px;
+        outline: #bbbbbb 1px solid;
+        display: block;
+        opacity: 0.5;
+        background: inherit;
+      }
+
+      &:hover {
+        &:after {
+          transition: 0.5s;
+          transform: scale(1.5);
+          opacity: 0.5;
+        }
+      }
+
+      &.active {
+        &:after {
+          transform: scale(1.5);
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+
+  .product-detail--name {
+    font-weight: bold;
+    font-size: 1.8em;
+    text-transform: uppercase;
+  }
+
+  .product-detail--price {
+    font-weight: bold;
+    font-size: 1.5em;
+    color: $mainOrange;
+    margin-top: 10px;
+  }
+}
+
+.size--list-btn--wrapper {
+  width: 226px;
+  padding: 10px;
+  border: 1px solid #dee2e6;
+  border-radius: 3px;
+  box-shadow: 0 0 3px #dee2e6;
+  background: #fff;
+}
+.size--list-btn {
+  & > * {
+    margin: 2px 2px 0 0;
+  }
+}

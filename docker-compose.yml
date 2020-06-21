@@ -1,0 +1,117 @@
+version: "3.4"
+services: 
+    api-gateway:
+        image: mcr.microsoft.com/dotnet/core/sdk:3.1
+        container_name: eshop-api-gateway
+        working_dir: /app
+        volumes: 
+            - "./ApiGateway:/app:rw"
+            - /app/bin
+            - /app/obj
+            - "./MessageTypes:/MessageTypes:rw"
+            - /MessageTypes/bin
+            - /MessageTypes/obj
+        network_mode: "host"
+        command: dotnet watch run
+
+    identity-server:
+        image: mcr.microsoft.com/dotnet/core/sdk:3.1
+        container_name: eshop-identity-server
+        working_dir: /app
+        volumes: 
+            - "./IdentityServer:/app:rw"
+            - /app/bin
+            - /app/obj
+            - "./MessageTypes:/MessageTypes:rw"
+            - /MessageTypes/bin
+            - /MessageTypes/obj
+        network_mode: "host"
+        command: dotnet watch run
+
+    catalog-api:
+        image: mcr.microsoft.com/dotnet/core/sdk:3.1
+        container_name: eshop-catalog-api
+        working_dir: /app
+        volumes: 
+            - "./CatalogApi:/app:rw"
+            - /app/bin
+            - /app/obj
+            - "./MessageTypes:/MessageTypes:rw"
+            - /MessageTypes/bin
+            - /MessageTypes/obj
+        network_mode: "host"
+        command: dotnet watch run
+
+    order-api:
+        image: mcr.microsoft.com/dotnet/core/sdk:3.1
+        container_name: eshop-order-api
+        working_dir: /app
+        volumes: 
+            - "./OrderApi:/app:rw"
+            - /app/bin
+            - /app/obj
+            - "./MessageTypes:/MessageTypes:rw"
+            - /MessageTypes/bin
+            - /MessageTypes/obj
+        network_mode: "host"
+        command: dotnet watch run
+
+    payment-api:
+        image: mcr.microsoft.com/dotnet/core/sdk:3.1
+        container_name: eshop-payment-api
+        working_dir: /app
+        volumes: 
+            - "./PaymentApi:/app:rw"
+            - /app/bin
+            - /app/obj
+            - "./MessageTypes:/MessageTypes:rw"
+            - /MessageTypes/bin
+            - /MessageTypes/obj
+        network_mode: "host"
+        command: dotnet watch run
+
+    cart-api:
+        image: mcr.microsoft.com/dotnet/core/sdk:3.1
+        container_name: eshop-cart-api
+        working_dir: /app
+        volumes: 
+            - "./CartApi:/app:rw"
+            - /app/bin
+            - /app/obj
+            - "./MessageTypes:/MessageTypes:rw"
+            - /MessageTypes/bin
+            - /MessageTypes/obj
+        network_mode: "host"
+        command: dotnet watch run
+
+    eshop-react-client:
+        image: node
+        container_name: eshop-react-client
+        working_dir: /app
+        volumes: 
+            - "./ReactClient/build:/app:rw"
+        network_mode: "host"
+        command: >
+            bash -c "npm i -g serve
+            && serve -l 3000 -s ."
+    
+    redis:
+        image: redis
+        container_name: eshop-redis
+        network_mode: "host"
+        ports: 
+            - "6379:6379"
+
+    rabbitmq:
+        image: rabbitmq
+        container_name: eshop-rabbitmq
+        network_mode: "host"
+        # ports: 
+        #     - "15672:15672"
+
+    stripe-cli:
+        image: stripe/stripe-cli
+        container_name: eshop-stripe-cli
+        restart: "always"
+        network_mode: "host"
+        command: listen --api-key sk_test_9lbV8iZ2EjD5TiOzTAFURm7H00TCPFae4M --forward-to localhost:5000/api/payment/payment/webhook

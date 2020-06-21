@@ -1,0 +1,35 @@
+﻿@model LoggedOutViewModel
+<style>
+    body {
+        background: #fff;
+        color: #a4a4a4;
+    }
+</style>
+<div>
+    <div class="d-flex justify-content-center">
+        <div style="width:200px" id="sucessImg"></div>
+    </div>
+    <h2 class="text-center">You are Logged Out</h2>
+    <h3 class="text-center mt-3">
+        <b class="mr-4">APPS: </b>
+        <a href="http://localhost:3000">
+            <img src="/lib/images/Logo.svg" alt="logo" width="30px">
+        </a>
+    </h3>
+    <script>
+        lottie.loadAnimation({
+            container: document.getElementById("sucessImg"),
+            renderer: 'svg',
+            loop: false,
+            autoplay: true,
+            path: '/lib/animations/success.json'
+        });
+        lottie.loadAnimation({
+            container: document.getElementById("loadingImg"),
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: '/lib/animations/loading-animation.json'
+        });
+    </script>
+</div>

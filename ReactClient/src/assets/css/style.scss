@@ -1,0 +1,140 @@
+@import './variables';
+a {
+  text-decoration: none;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  font-family: 'Nunito Sans', sans-serif;
+}
+#nprogress .spinner {
+  top: 22px;
+}
+#nprogress .bar {
+  height: 3px;
+}
+
+.nowrap {
+  white-space: nowrap;
+  flex-wrap: nowrap;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f5f5f5;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+  background-color: #f5f5f5;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #868686ab;
+}
+
+.text-blue {
+  color: #4b7cf3;
+}
+.uppercase {
+  text-transform: uppercase;
+}
+.link {
+  color: #4b7cf3;
+  cursor: pointer;
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+.text-orange {
+  color: $mainOrange;
+}
+
+// ----- PERSENT
+@for $var from 0 through 100 {
+  .w#{$var}p {
+    width: $var + 0%;
+  }
+  .h#{$var}p {
+    height: $var + 0%;
+  }
+  .m#{$var}p {
+    margin: $var + 0%;
+  }
+  .mt#{$var}p {
+    margin-top: $var + 0%;
+  }
+  .ml#{$var}p {
+    margin-left: $var + 0%;
+  }
+  .mb#{$var}p {
+    margin-bottom: $var + 0%;
+  }
+  .mr#{$var}p {
+    margin-right: $var + 0%;
+  }
+  .p#{$var}p {
+    padding: $var + 0%;
+  }
+  .pt#{$var}p {
+    padding-top: $var + 0%;
+  }
+  .pl#{$var}p {
+    padding-left: $var + 0%;
+  }
+  .pb#{$var}p {
+    padding-bottom: $var + 0%;
+  }
+  .pr#{$var}p {
+    padding-right: $var + 0%;
+  }
+}
+// ----- PIXEL
+@for $var from 0 through 100 {
+  .w#{$var} {
+    width: $var + 0px;
+  }
+  .h#{$var} {
+    height: $var + 0px;
+  }
+  .m#{$var} {
+    margin: $var + 0px;
+  }
+  .mt#{$var} {
+    margin-top: $var + 0px;
+  }
+  .ml#{$var} {
+    margin-left: $var + 0px;
+  }
+  .mb#{$var} {
+    margin-bottom: $var + 0px;
+  }
+  .mr#{$var} {
+    margin-right: $var + 0px;
+  }
+  .p#{$var} {
+    padding: $var + 0px;
+  }
+  .pt#{$var} {
+    padding-top: $var + 0px;
+  }
+  .pl#{$var} {
+    padding-left: $var + 0px;
+  }
+  .pb#{$var} {
+    padding-bottom: $var + 0px;
+  }
+  .pr#{$var} {
+    padding-right: $var + 0px;
+  }
+}

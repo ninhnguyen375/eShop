@@ -1,0 +1,181 @@
+@import '../../../assets/css/variables';
+@import '../../../assets/css/mixins';
+
+.product-card {
+  $global-width: var(--global-width);
+  width: $global-width;
+
+  .product-card--image {
+    $image1: var(--product-image1);
+    $image2: var(--product-image2);
+
+    background-image: $image1;
+    width: $global-width - 2px;
+    height: $global-width;
+    border-radius: 5px 5px 0 0;
+    background-size: cover;
+    transition: .3s;
+
+    &:hover {
+      background-image: $image2;
+    }
+  }
+
+  .product-card--caption {
+    text-align: center;
+    margin-top: -40px;
+    padding: 10px;
+    .caption--name {
+      font-weight: bold;
+      font-size: 1.2em;
+      color: #000;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .caption--price {
+      font-weight: bold;
+      font-size: 1.2em;
+      margin-top: 10px;
+    }
+  }
+
+  .product-card--button {
+    position: relative;
+    align-items: center;
+    top: -60px;
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+
+    .by-now-btn {
+      padding: 10px 30px;
+      background: $mainOrange;
+      color: white;
+      border-radius: 5px;
+      font-weight: bold;
+      font-size: 1.4em;
+      position: relative;
+      bottom: -99px;
+      transition: 0.2s;
+      cursor: pointer;
+
+      @include zoomingBg;
+
+      &:hover {
+        background: rgb(255, 121, 81);
+      }
+
+      i {
+        margin-right: 10px;
+      }
+    }
+  }
+  .product-card--heart {
+    font-size: 2em;
+    color: $mainOrange;
+    position: relative;
+    right: calc(2em - #{$global-width});
+    top: 20px;
+    cursor: pointer;
+
+    &:hover {
+      color: rgb(255, 121, 81);
+    }
+  }
+
+  &:hover {
+    .by-now-btn {
+      position: relative;
+      bottom: 0px;
+    }
+
+    .caption--name {
+      color: $mainOrange;
+      cursor: pointer;
+    }
+  }
+}
+
+// HORIZONTAL MODE
+.product-card--list-view {
+  width: 100%;
+  
+  > .ant-card-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+
+    &:after, &:before {
+      content: none;
+    }
+  }
+
+  .product-card--image {
+    $image1: var(--product-image1);
+    $image2: var(--product-image2);
+
+    width: 15em;
+    background-image: $image1;
+    height: 15em;
+    border-radius: 5px;
+    background-size: cover;
+
+    &:hover {
+      background-image: $image2;
+    };
+  }
+
+  .product-card--caption {
+    text-align: center;
+    padding: 10px;
+    .caption--name {
+      font-weight: bold;
+      font-size: 1.2em;
+      color: #000;
+    }
+    .caption--price {
+      font-weight: bold;
+      font-size: 1.2em;
+      margin-top: 10px;
+    }
+  }
+
+  .product-card--button {
+    position: relative;
+    align-items: center;
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+
+    .by-now-btn {
+      padding: 10px 30px;
+      background: $mainOrange;
+      color: white;
+      border-radius: 5px;
+      font-weight: bold;
+      font-size: 1.4em;
+      transition: 0.2s;
+      cursor: pointer;
+      &:hover {
+        background: rgb(255, 121, 81);
+      }
+
+      i {
+        margin-right: 10px;
+      }
+    }
+  }
+  .product-card--heart {
+    font-size: 2em;
+    color: $mainOrange;
+    cursor: pointer;
+    margin-right: 20px;
+
+    &:hover {
+      color: rgb(255, 121, 81);
+    }
+  }
+
+}
